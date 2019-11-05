@@ -20,8 +20,15 @@ func main() {
 		go checkLink(link, c)
 	}
 
-	for {
-		go checkLink(<-c, c)
+	// for {
+	// 	go checkLink(<-c, c)
+	// }
+
+	// An alternative to the loop above we can simplify
+	// to this code below:
+
+	for l := range c {
+		go checkLink(l, c)
 	}
 }
 
